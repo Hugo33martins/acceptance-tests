@@ -1,11 +1,6 @@
 Feature: Bar functionment
 
-  Background: Mr Pignon and Mr Leblanc go to the bar "Le Juste" which is a cocktail bar. There are only 10 seats in the bar.
-    Given the bar exist
-    And Mr 'Pignon' exist
-    And Mr 'Leblanc' exist
-
-    Scenario: Entry in the bar
+    Scenario: First story : Entry in the bar
       Given there are <current_client> people in the bar
       When Mr Pignon and Mr Leblanc try to enter the bar
       Then they are <expected_result> entry
@@ -16,16 +11,23 @@ Feature: Bar functionment
       | 3              | allowed         | 5                   |
       | 8              | allowed         | 10                  |
       | 9              | refused         | 9                   |
-
-    Scenario: Command a cocktail
-      Given Mr Pignon and Mr Leblanc are in the bar
-      When they commanded the 10€ 'monthly cocktail'
-      Then the command is taken into both account
     
-    Scenario: Pay the addition
+    Scenario: Second story : Pay individually the addition
       Given Mr Pignon and Mr Leblanc are in the bar
       And they have commanded the 10€ 'monthly cocktail'
-      And decided that Mr Leblanc will pay the addition
+      And Mr Leblanc have 100€ in money
       When Mr Leblanc pays the addition
-      Then the addition is paid
-      And Mr Leblanc's money will be reduced by the addition's amount.
+      Then the addition is paid by Mr Leblanc
+      And Mr Leblanc's money will be reduced by the addition's amount to 80.
+
+    Scenario: Third story : Pat a new command after always paid one
+      Given Mr Pignon and Mr Leblanc are in the bar
+      And they have commanded the 10€ 'monthly cocktail'
+      And Mr Pignon have 50€ in money
+      And Mr Leblanc have 50€ in money
+      When Mr Pignon pays his addition
+      And Mr Leblanc re-command 2 10€ 'monthly cocktail'
+      And Mr Leblanc pays his addition
+      Then the addition is paid for Mr Pignon and Mr Leblanc
+      And Mr Leblanc's money will be reduced by the addition's amount to 20.
+      And Mr Pignon's money will be reduced by the addition's amount to 40.

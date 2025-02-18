@@ -1,6 +1,3 @@
-com/sqli/isc/iut/courses/cucumber/Drink.class
-com/sqli/isc/iut/courses/cucumber/VinylLibrary.class
-com/sqli/isc/iut/courses/cucumber/Calculator.class
 com/sqli/isc/iut/courses/cucumber/Person.class
-com/sqli/isc/iut/courses/cucumber/Album.class
 com/sqli/isc/iut/courses/cucumber/Bar.class
+com/sqli/isc/iut/courses/cucumber/Drink.class

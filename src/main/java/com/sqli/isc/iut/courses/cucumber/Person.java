@@ -53,6 +53,10 @@ public class Person{
         return this.money;
     }
 
+    public void setMoney(int laMoney){
+        this.money = laMoney;
+    }
+
     public ArrayList<Drink> getAdditionList(){
         return this.addition;
     }

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="Bar functionment" time="0.045" tests="2" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="Bar functionment" time="0.07" tests="2" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="21"/>
     <property name="sun.jnu.encoding" value="UTF-8"/>
@@ -12,7 +12,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="FR"/>
     <property name="sun.boot.library.path" value="/usr/lib/jvm/java-21-openjdk-amd64/lib"/>
-    <property name="sun.java.command" value="/home/william/acceptance-tests/target/surefire/surefirebooter742675212817004197.jar /home/william/acceptance-tests/target/surefire 2025-02-18T15-13-47_449-jvmRun1 surefire8556392585584873003tmp surefire_014409966197594697947tmp"/>
+    <property name="sun.java.command" value="/home/william/acceptance-tests/target/surefire/surefirebooter16387270637624012323.jar /home/william/acceptance-tests/target/surefire 2025-02-18T18-22-57_983-jvmRun1 surefire8822622270708602340tmp surefire_03282929176234213941tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="/home/william/acceptance-tests/target/test-classes:/home/william/acceptance-tests/target/classes:/home/william/.m2/repository/io/cucumber/cucumber-java/6.10.3/cucumber-java-6.10.3.jar:/home/william/.m2/repository/io/cucumber/cucumber-core/6.10.3/cucumber-core-6.10.3.jar:/home/william/.m2/repository/io/cucumber/cucumber-gherkin/6.10.3/cucumber-gherkin-6.10.3.jar:/home/william/.m2/repository/io/cucumber/cucumber-gherkin-messages/6.10.3/cucumber-gherkin-messages-6.10.3.jar:/home/william/.m2/repository/io/cucumber/messages/15.0.0/messages-15.0.0.jar:/home/william/.m2/repository/io/cucumber/tag-expressions/3.0.1/tag-expressions-3.0.1.jar:/home/william/.m2/repository/io/cucumber/cucumber-expressions/10.3.0/cucumber-expressions-10.3.0.jar:/home/william/.m2/repository/io/cucumber/datatable/3.5.0/datatable-3.5.0.jar:/home/william/.m2/repository/io/cucumber/cucumber-plugin/6.10.3/cucumber-plugin-6.10.3.jar:/home/william/.m2/repository/io/cucumber/docstring/6.10.3/docstring-6.10.3.jar:/home/william/.m2/repository/io/cucumber/html-formatter/13.0.0/html-formatter-13.0.0.jar:/home/william/.m2/repository/io/cucumber/create-meta/4.0.0/create-meta-4.0.0.jar:/home/william/.m2/repository/org/apiguardian/apiguardian-api/1.1.1/apiguardian-api-1.1.1.jar:/home/william/.m2/repository/io/cucumber/cucumber-junit-platform-engine/6.10.3/cucumber-junit-platform-engine-6.10.3.jar:/home/william/.m2/repository/org/junit/platform/junit-platform-engine/1.7.1/junit-platform-engine-1.7.1.jar:/home/william/.m2/repository/org/opentest4j/opentest4j/1.2.0/opentest4j-1.2.0.jar:/home/william/.m2/repository/org/junit/platform/junit-platform-commons/1.7.1/junit-platform-commons-1.7.1.jar:/home/william/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.7.1/junit-jupiter-engine-5.7.1.jar:/home/william/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.7.1/junit-jupiter-api-5.7.1.jar:"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -27,7 +27,7 @@
     <property name="line.separator" value="&#10;"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
-    <property name="surefire.real.class.path" value="/home/william/acceptance-tests/target/surefire/surefirebooter742675212817004197.jar"/>
+    <property name="surefire.real.class.path" value="/home/william/acceptance-tests/target/surefire/surefirebooter16387270637624012323.jar"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="21.0.5+11-Ubuntu-1ubuntu124.04"/>
     <property name="user.name" value="william"/>
@@ -53,6 +53,6 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="65.0"/>
   </properties>
-  <testcase name="Command a cocktail" classname="Bar functionment" time="0.014"/>
-  <testcase name="Pay the addition" classname="Bar functionment" time="0.029"/>
+  <testcase name="Second story : Pay individually the addition" classname="Bar functionment" time="0.033"/>
+  <testcase name="Third story : Pat a new command after always paid one" classname="Bar functionment" time="0.037"/>
 </testsuite>

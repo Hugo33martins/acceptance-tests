@@ -12,21 +12,13 @@ import io.cucumber.java.en.When;
 
 public class BarTest{
 
-	private Bar bar;
-    private ArrayList<Person> people = new ArrayList<>();
-    private boolean result;
-    private Person leblanc = new Person("Leblanc", 100);
-    private Person pignon = new Person("Pignon", 100);
-
-    @Given("the bar exist")
-    public void the_bar_exist() {
-        bar = new Bar("Le Juste", 10);
-    }
-
-    @Given("Mr {string} exist")
-    public void mr_exist(String name) {
-        people.add(new Person(name, 30));
-    }
+	public Bar bar = new Bar("Le Juste", 10);;
+    public ArrayList<Person> people = new ArrayList<>();
+    public boolean resultLeblanc;
+    public boolean resultPignon;
+    public boolean resultCapacityBar;
+    public Person leblanc = new Person("Leblanc", 100);
+    public Person pignon = new Person("Pignon", 100);
 
     /**
      * Test for capacity of the bar and if they are allowed to enter
@@ -44,17 +36,17 @@ public class BarTest{
         ArrayList<Person> clients = new ArrayList<>();
         clients.add(pignon);
         clients.add(leblanc);
-        result = bar.groupEnterInBar(clients);
+        resultCapacityBar = bar.groupEnterInBar(clients);
     }
 
     @Then("they are refused entry")
     public void they_are_refused_entry(){
-        assertFalse(result);
+        assertFalse(resultCapacityBar);
     }
 
     @Then("they are allowed entry")
     public void they_are_allowed_entry(){
-        assertTrue(result);
+        assertTrue(resultCapacityBar);
     }
 
     @Then("the bar contains {int} people")
@@ -62,34 +54,11 @@ public class BarTest{
         assertEquals(capacity, bar.getNumberClients());
     }
 
-    /**
-     * Test for commanding a drink
-     */
-
     @Given("Mr Pignon and Mr Leblanc are in the bar")
     public void mr_pignon_and_mr_leblanc_are_in_the_bar(){
         bar.enterInBar(leblanc);
         bar.enterInBar(pignon);
     }
-
-    @When("they commanded the {int}€ {string}")
-    public void they_commanded_the_€(Integer cost, String name) {
-        pignon.addDrinkToCommand(new Drink(name, cost));
-        leblanc.addDrinkToCommand(new Drink(name, cost));
-    }
-
-    @Then("the command is taken into both account")
-    public void the_command_is_taken_into_both_account() {
-        ArrayList<Drink> drinksCommandLeblanc = leblanc.getCommandList();
-        assertTrue(drinksCommandLeblanc.get(drinksCommandLeblanc.size()-1).getName().equals("monthly cocktail"));
-
-        ArrayList<Drink> drinksCommandPignon = pignon.getCommandList();
-        assertTrue(drinksCommandPignon.get(drinksCommandPignon.size()-1).getName().equals("monthly cocktail"));
-    }
-
-    /**
-     * Test for paying the addition
-     */
 
     @Given("they have commanded the {int}€ {string}")
     public void they_have_commanded_the_€(Integer cost, String name){
@@ -97,28 +66,72 @@ public class BarTest{
         leblanc.addDrinkToCommand(new Drink(name, cost));
     }
 
-    @Given("decided that Mr Leblanc will pay the addition")
-    public void decided_that_mr_leblanc_will_pay_the_addition(){
+    @Given("Mr Leblanc have {int}€ in money")
+    public void mr_Leblanc_have_€_in_money(Integer money){
+        leblanc.setMoney(money);
+    }
+
+    @Given("Mr Pignon have {int}€ in money")
+    public void mr_pignon_have_€_in_money(Integer money){
+        pignon.setMoney(money);
+    }
+
+    @When("Mr Leblanc pays the addition")
+    public void mr_leblanc_pays_the_addition(){
         for(Drink drink : pignon.getCommandList()){
             leblanc.addDrinkToAddition(drink);
         }
         for(Drink drink : leblanc.getCommandList()){
             leblanc.addDrinkToAddition(drink);
         }
+        resultLeblanc = leblanc.paysAddition();
     }
 
-    @When("Mr Leblanc pays the addition")
-    public void mr_leblanc_pays_the_addition(){
-        result = leblanc.paysAddition();
+    @When("Mr Leblanc pays his addition")
+    public void mr_leblanc_pays_his_addition(){
+        for(Drink drink : leblanc.getCommandList()){
+            leblanc.addDrinkToAddition(drink);
+        }
+        resultLeblanc = leblanc.paysAddition();
     }
 
-    @Then("the addition is paid")
-    public void the_addition_is_paid(){
-        assertTrue(result);
+    @When("Mr Pignon pays his addition")
+    public void mr_pignon_pays_his_addition(){
+        for(Drink drink : pignon.getCommandList()){
+            pignon.addDrinkToAddition(drink);
+        }
+        resultPignon = pignon.paysAddition();
     }
 
-    @Then("Mr Leblanc's money will be reduced by the addition's amount.")
-    public void mr_leblanc_s_money_will_be_reduced_by_the_addition_s_amount() {
-        assertEquals(80, leblanc.GetMoney());
+
+    @When("Mr Leblanc re-command {int} {int}€ {string}")
+    public void mr_leblanc_re_command_€(Integer quantity, Integer cost, String name) {
+        for(int i = 0; i < quantity; i++){
+            leblanc.addDrinkToCommand(new Drink(name, cost));
+        }
+    }
+
+
+    @Then("the addition is paid by Mr Leblanc")
+    public void the_addition_is_paid_by_mr_leblanc(){
+        assertTrue(resultLeblanc);
+    }
+
+
+    @Then("the addition is paid for Mr Pignon and Mr Leblanc")
+    public void the_addition_is_paid_for_mr_pignon_and_mr_leblanc() {
+        assertTrue(resultLeblanc);
+        assertTrue(resultPignon);
+    }
+
+
+    @Then("Mr Leblanc's money will be reduced by the addition's amount to {int}.")
+    public void mr_leblanc_s_money_will_be_reduced_by_the_addition_s_amount_to(Integer amountExcepted) {
+        assertEquals(amountExcepted, leblanc.GetMoney());
+    }
+
+    @Then("Mr Pignon's money will be reduced by the addition's amount to {int}.")
+    public void mr_pignon_s_money_will_be_reduced_by_the_addition_s_amount_to(Integer amountExcepted) {
+        assertEquals(amountExcepted, pignon.GetMoney());
     }
 }
